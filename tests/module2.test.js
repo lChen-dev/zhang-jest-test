@@ -1,7 +1,10 @@
+
+const fn1 = jest.fn(() => {
+  return 'I am mocked result of f1'
+});
+
 const module_1_mock = jest.mock('../src/module1', () => ({
-  fn1: jest.fn(() => {
-    return 'I am mocked result of f1'
-  })
+  fn1: fn1
 }));
 
 const module2 = require('../src/module2');
@@ -20,8 +23,7 @@ describe('Testing module2.main', () => {
 
     // everything is undefined
 
-    expect(module_1_mock.fn1).toEqual(undefined);
-    expect(module_1_mock.mock.fn1).toEqual(undefined);
+    expect(fn1.mock.calls.length).toEqual(1);
   })
 
 })
