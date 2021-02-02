@@ -1,7 +1,7 @@
-const { checkUserBalance } = require('./helpers')
+const helpers = require('./helpers')
 
 async function createOrder(data) {
-  await checkUserBalance(data.user_id, data.amounttttttttt);
+  await helpers.checkUserBalance(data.user_id, data.amounttttttttt);
   return true;
 }
 
